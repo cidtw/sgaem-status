@@ -1,45 +1,96 @@
+/* ==========================================================================
+   SKEUOMORPHIC HARDWARE RACK THEME (DARK / LIGHT / SYSTEM)
+   ========================================================================== */
+
 :root {
-  /* Default: Dark Theme */
-  --bg-main: #0a0d14;
-  --bg-card: rgba(18, 24, 38, 0.75);
-  --bg-card-hover: rgba(25, 34, 54, 0.9);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.16);
-  --text-main: #f1f5f9;
-  --text-muted: #94a3b8;
-  --text-dim: #64748b;
-  --input-bg: rgba(255, 255, 255, 0.06);
-  --input-bg-hover: rgba(255, 255, 255, 0.1);
-  --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  --ambient-bg: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(16, 185, 129, 0.04) 40%, transparent 70%);
+  /* Common metrics */
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Share Tech Mono', monospace;
+  
+  /* Status Lamp Colors */
+  --led-green: #10b981;
+  --led-green-core: #6ee7b7;
+  --led-green-glow: rgba(16, 185, 129, 0.7);
+  --led-green-ambient: rgba(16, 185, 129, 0.15);
 
-  --color-online: #10b981;
-  --color-online-glow: rgba(16, 185, 129, 0.25);
-  --color-degraded: #f59e0b;
-  --color-degraded-glow: rgba(245, 158, 11, 0.25);
-  --color-offline: #ef4444;
-  --color-offline-glow: rgba(239, 68, 68, 0.25);
-  --color-checking: #3b82f6;
-  --color-checking-glow: rgba(59, 130, 246, 0.25);
+  --led-red: #ef4444;
+  --led-red-core: #fca5a5;
+  --led-red-glow: rgba(239, 68, 68, 0.75);
+  --led-red-ambient: rgba(239, 68, 68, 0.18);
 
-  --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --led-amber: #f59e0b;
+  --led-amber-core: #fde68a;
+  --led-amber-glow: rgba(245, 158, 11, 0.7);
+  --led-amber-ambient: rgba(245, 158, 11, 0.15);
+
+  --led-blue: #3b82f6;
+  --led-blue-core: #93c5fd;
+  --led-blue-glow: rgba(59, 130, 246, 0.7);
+  --led-blue-ambient: rgba(59, 130, 246, 0.15);
+
+  /* Default Dark Industrial Rack */
+  --desk-bg: radial-gradient(circle at 50% 20%, #1a1e26 0%, #0d1017 60%, #06070a 100%);
+  --chassis-metal: linear-gradient(180deg, #373e4a 0%, #282d37 25%, #20242c 70%, #1a1d23 100%);
+  --chassis-border-top: rgba(255, 255, 255, 0.22);
+  --chassis-border-bottom: #0e1014;
+  --chassis-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  
+  --text-engraved: #e2e8f0;
+  --text-engraved-shadow: 0 -1px 1px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.12);
+  --text-dimmed: #8492a6;
+  
+  --bezel-bg: linear-gradient(180deg, #181b22 0%, #222731 100%);
+  --bezel-border: #14171d;
+  --bezel-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  --screen-well-bg: #090c10;
+  --screen-border-top: #030406;
+  --screen-border-bottom: rgba(255, 255, 255, 0.08);
+  --screen-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.95), inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
+  
+  --screw-metal: linear-gradient(135deg, #707886 0%, #464c56 50%, #2c3038 100%);
+  --screw-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  --screw-slot: #15181d;
+
+  --btn-top: linear-gradient(180deg, #444c5a 0%, #2a303a 50%, #1e222a 100%);
+  --btn-shadow: 0 4px 0 #12151a, 0 6px 12px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  --btn-text: #f8fafc;
+  
+  --vfd-text: #38bdf8;
+  --vfd-glow: 0 0 12px rgba(56, 189, 248, 0.45);
 }
 
-/* Light Theme Variables */
+/* Light Vintage Laboratory Instrument Theme */
 [data-theme="light"] {
-  --bg-main: #f8fafc;
-  --bg-card: rgba(255, 255, 255, 0.88);
-  --bg-card-hover: rgba(255, 255, 255, 0.98);
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-strong: rgba(15, 23, 42, 0.18);
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #94a3b8;
-  --input-bg: rgba(0, 0, 0, 0.04);
-  --input-bg-hover: rgba(0, 0, 0, 0.07);
-  --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  --ambient-bg: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.03) 40%, transparent 70%);
+  --desk-bg: radial-gradient(circle at 50% 20%, #e2e8f0 0%, #cbd5e1 60%, #94a3b8 100%);
+  --chassis-metal: linear-gradient(180deg, #ffffff 0%, #eceff4 30%, #dde2e9 70%, #cfd6df 100%);
+  --chassis-border-top: rgba(255, 255, 255, 0.9);
+  --chassis-border-bottom: #94a3b8;
+  --chassis-shadow: 0 25px 60px rgba(15, 23, 42, 0.25), 0 8px 16px rgba(15, 23, 42, 0.15), inset 0 1px 0 #ffffff;
+
+  --text-engraved: #1e293b;
+  --text-engraved-shadow: 0 1px 0 rgba(255, 255, 255, 0.9), 0 -1px 1px rgba(0, 0, 0, 0.1);
+  --text-dimmed: #64748b;
+
+  --bezel-bg: linear-gradient(180deg, #cfd6df 0%, #e8edf3 100%);
+  --bezel-border: #94a3b8;
+  --bezel-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 0 #ffffff;
+
+  --screen-well-bg: #111827;
+  --screen-border-top: #030712;
+  --screen-border-bottom: rgba(255, 255, 255, 0.6);
+  --screen-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.95), inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 #ffffff;
+
+  --screw-metal: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+  --screw-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 1px #ffffff;
+  --screw-slot: #475569;
+
+  --btn-top: linear-gradient(180deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
+  --btn-shadow: 0 4px 0 #94a3b8, 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px #ffffff;
+  --btn-text: #0f172a;
+  
+  --vfd-text: #38bdf8;
+  --vfd-glow: 0 0 12px rgba(56, 189, 248, 0.45);
 }
 
 * {
@@ -49,233 +100,324 @@
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  font-family: var(--font-sans);
+  background: var(--desk-bg);
   min-height: 100vh;
-  position: relative;
-  overflow-x: hidden;
-  line-height: 1.5;
+  font-family: var(--font-sans);
+  color: var(--text-engraved);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  transition: background 0.3s ease;
   -webkit-font-smoothing: antialiased;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.ambient-glow {
+/* Desk surface texture */
+.desk-surface {
   position: fixed;
-  top: -10vw;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70vw;
-  height: 35vw;
-  background: var(--ambient-bg);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
   pointer-events: none;
   z-index: 0;
-  transition: background 0.3s ease;
 }
 
-.container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 2.5rem 1.5rem;
+/* ==========================================================================
+   RACK CHASSIS (HEAVY BRUSHED METAL ENCLOSURE)
+   ========================================================================== */
+
+.rack-chassis {
+  width: 100%;
+  max-width: 940px;
+  background: var(--chassis-metal);
+  border-radius: 18px;
+  border-top: 1px solid var(--chassis-border-top);
+  border-bottom: 3px solid var(--chassis-border-bottom);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: var(--chassis-shadow);
+  padding: 2.2rem 2.5rem;
   position: relative;
   z-index: 1;
+  transition: all 0.3s ease;
 }
 
-/* Card */
-.card {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 16px;
-  box-shadow: var(--card-shadow);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+/* Rack Chassis Screws */
+.rack-screw {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--screw-metal);
+  box-shadow: var(--screw-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Header */
+.screw-slot {
+  width: 10px;
+  height: 2px;
+  background: var(--screw-slot);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.9);
+}
+
+.screw-tl { top: 12px; left: 14px; }
+.screw-tr { top: 12px; right: 14px; }
+.screw-bl { bottom: 12px; left: 14px; }
+.screw-br { bottom: 12px; right: 14px; }
+
+.screw-tl .screw-slot { transform: rotate(35deg); }
+.screw-tr .screw-slot { transform: rotate(115deg); }
+.screw-bl .screw-slot { transform: rotate(70deg); }
+.screw-br .screw-slot { transform: rotate(-25deg); }
+
+/* Chassis Ventilation Grilles */
+.chassis-vents {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.chassis-vents span {
+  width: 50px;
+  height: 5px;
+  border-radius: 3px;
+  background: #090b0e;
+  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.bottom-vents {
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+
+/* ==========================================================================
+   HEADER & METALLIC BADGES
+   ========================================================================== */
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 1.5rem;
   gap: 1.5rem;
+  margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
 
-.header-brand h1 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.35rem;
-  color: var(--text-main);
-}
-
-[data-theme="dark"] .header-brand h1 {
-  background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.brand-badge {
-  display: inline-block;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-checking);
-  background: rgba(59, 130, 246, 0.12);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  padding: 0.2rem 0.5rem;
-  border-radius: 9999px;
-  margin-bottom: 0.5rem;
-}
-
-.target-link {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.target-link code {
-  font-family: var(--font-mono);
-  background: var(--input-bg);
-  padding: 0.15rem 0.4rem;
+.metal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(180deg, #475569 0%, #334155 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid #0f172a;
   border-radius: 4px;
-  color: #0284c7;
+  padding: 2px 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  margin-bottom: 0.4rem;
 }
 
-[data-theme="dark"] .target-link code {
+.badge-text {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f8fafc;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.badge-rivet {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  box-shadow: inset 0 1px 1px #ffffff, 0 1px 1px rgba(0, 0, 0, 0.8);
+}
+
+.stamped-title {
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text-engraved);
+  text-shadow: var(--text-engraved-shadow);
+  margin-bottom: 0.35rem;
+}
+
+.target-plate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  color: var(--text-dimmed);
+}
+
+.plate-label {
+  font-weight: 700;
+  text-shadow: var(--text-engraved-shadow);
+}
+
+.lcd-target code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: #090c10;
   color: #38bdf8;
+  padding: 0.2rem 0.55rem;
+  border-radius: 5px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.target-link a {
-  text-decoration: none;
+.host-stamp {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-dimmed);
+  text-shadow: var(--text-engraved-shadow);
 }
 
-.host-pill {
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  margin-left: 0.5rem;
-  background: var(--input-bg);
-  padding: 0.15rem 0.5rem;
-  border-radius: 9999px;
-  border: 1px solid var(--border-subtle);
-}
+/* ==========================================================================
+   TACTILE HARDWARE CONTROLS
+   ========================================================================== */
 
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   flex-wrap: wrap;
 }
 
-.control-group {
+.tactile-control {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--text-muted);
 }
 
-.control-select {
-  background: var(--input-bg);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-main);
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  font-family: var(--font-sans);
-  font-size: 0.85rem;
-  cursor: pointer;
-  outline: none;
-  transition: all 0.2s;
+.stamped-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-shadow: var(--text-engraved-shadow);
+  color: var(--text-dimmed);
 }
 
-.control-select:hover, .control-select:focus {
-  border-color: var(--border-strong);
-  background: var(--input-bg-hover);
-}
-
-/* Theme Switcher Segmented Control */
-.theme-switcher {
-  display: flex;
-  align-items: center;
-  background: var(--input-bg);
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
+.control-bezel {
+  background: var(--bezel-bg);
+  border: 1px solid var(--bezel-border);
+  box-shadow: var(--bezel-shadow);
+  border-radius: 7px;
   padding: 2px;
-  gap: 2px;
 }
 
-.theme-btn {
+.hardware-select {
   background: transparent;
   border: none;
-  color: var(--text-muted);
+  color: var(--text-engraved);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  outline: none;
+  text-shadow: var(--text-engraved-shadow);
+}
+
+.hardware-select option {
+  background: #1e222a;
+  color: #ffffff;
+}
+
+/* 3D Rocker Theme Switcher */
+.theme-rocker-wrapper {
+  display: flex;
+  background: var(--screen-well-bg);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+.rocker-btn {
+  background: var(--btn-top);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  color: var(--text-dimmed);
   width: 32px;
-  height: 32px;
-  border-radius: 6px;
+  height: 30px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 
-.theme-btn:hover {
-  color: var(--text-main);
-  background: var(--input-bg-hover);
+.rocker-btn:hover {
+  color: var(--text-engraved);
 }
 
-.theme-btn.active {
-  background: var(--bg-card);
-  color: #3b82f6;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+.rocker-btn.active {
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 10px rgba(56, 189, 248, 0.4);
+  transform: translateY(1px);
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
+/* Chunky Push Button with Chrome Ring */
+.tactile-push-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.btn-chrome-collar {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, #cbd5e1 0%, #64748b 50%, #334155 100%);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6), inset 0 1px 1px #ffffff;
+  z-index: 1;
+}
+
+.btn-cap {
+  position: relative;
+  z-index: 2;
+  display: flex;
   align-items: center;
   gap: 0.5rem;
+  background: var(--btn-top);
+  color: var(--btn-text);
   font-family: var(--font-sans);
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   padding: 0.55rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  border: 1px solid transparent;
-  transition: all 0.2s ease;
+  border-radius: 7px;
+  box-shadow: var(--btn-shadow);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.08s ease;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
-.btn-primary {
-  background: #3b82f6;
-  color: white;
+.tactile-push-btn:hover .btn-cap {
+  filter: brightness(1.1);
 }
 
-.btn-primary:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
+.tactile-push-btn:active .btn-cap {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #12151a, inset 0 2px 5px rgba(0, 0, 0, 0.7);
 }
 
-.btn-primary:active {
-  transform: translateY(0);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text-muted);
-  border: 1px solid var(--border-subtle);
-}
-
-.btn-ghost:hover {
-  color: var(--text-main);
-  background: var(--input-bg);
-}
-
-.btn-sm {
-  padding: 0.3rem 0.6rem;
-  font-size: 0.75rem;
-}
-
-/* Spinner */
 .spin-icon {
   transition: transform 0.3s;
 }
@@ -289,228 +431,363 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Countdown bar */
-.countdown-wrapper {
-  position: relative;
-  height: 4px;
-  background: var(--input-bg);
-  border-radius: 999px;
-  margin-bottom: 1.5rem;
+/* ==========================================================================
+   LED VU METER BAR / COUNTDOWN
+   ========================================================================== */
+
+.vu-meter-housing {
+  margin-bottom: 1.6rem;
+}
+
+.vu-glass {
+  background: var(--screen-well-bg);
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  height: 10px;
+  padding: 2px;
   overflow: hidden;
 }
 
-.countdown-bar {
+.vu-bar {
   height: 100%;
   width: 100%;
-  background: linear-gradient(90deg, #3b82f6, #10b981);
+  background: linear-gradient(90deg, #10b981 0%, #3b82f6 70%, #f59e0b 90%, #ef4444 100%);
+  border-radius: 4px;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
   transition: width 1s linear;
+}
+
+.vu-scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dimmed);
+  margin-top: 3px;
+  text-shadow: var(--text-engraved-shadow);
+  padding: 0 2px;
 }
 
 .countdown-label {
   display: none;
 }
 
-/* Hero Status Banner */
-.hero-status {
-  padding: 2rem;
+/* ==========================================================================
+   HERO MASTER DISPLAY BEZEL (CRT / VFD SCREEN + DOME LED)
+   ========================================================================== */
+
+.master-display-bezel {
+  background: var(--screen-well-bg);
+  border: 2px solid #000000;
+  border-top: 3px solid var(--screen-border-top);
+  border-bottom: 1px solid var(--screen-border-bottom);
+  border-radius: 14px;
+  box-shadow: var(--screen-shadow);
+  padding: 2rem 2.2rem;
+  margin-bottom: 1.8rem;
   display: flex;
   align-items: center;
   gap: 2rem;
-  margin-bottom: 1.5rem;
   position: relative;
   overflow: hidden;
 }
 
-.status-indicator-container {
+/* Realistic Glass Glare Reflection */
+.screen-glass-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(130deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 25%, transparent 50%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Subtle CRT scanline effect */
+.master-display-bezel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 3px);
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* 3D Convex Dome LED Lamp Assembly */
+.led-assembly {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  z-index: 6;
 }
 
-.status-beacon {
-  width: 32px;
-  height: 32px;
+.led-chrome-bezel {
+  width: 66px;
+  height: 66px;
   border-radius: 50%;
-  background: var(--color-checking);
-  box-shadow: 0 0 20px var(--color-checking-glow);
+  background: radial-gradient(circle, #e2e8f0 30%, #64748b 70%, #1e293b 100%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), inset 0 2px 2px #ffffff, inset 0 -2px 3px rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+}
+
+.led-lens {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 35% 35%, #93c5fd 0%, #3b82f6 50%, #1d4ed8 100%);
+  box-shadow: 0 0 25px var(--led-blue-glow), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
   transition: all 0.4s ease;
-  z-index: 2;
 }
 
-.status-beacon-pulse {
+.led-specular {
   position: absolute;
-  width: 64px;
-  height: 64px;
+  top: 6px;
+  left: 10px;
+  width: 14px;
+  height: 9px;
   border-radius: 50%;
-  background: var(--color-checking-glow);
-  opacity: 0.7;
-  animation: pulseBeacon 2s cubic-bezier(0.24, 0, 0.38, 1) infinite;
-  z-index: 1;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 80%);
+  transform: rotate(-25deg);
 }
 
-@keyframes pulseBeacon {
-  0% { transform: scale(0.6); opacity: 0.8; }
-  100% { transform: scale(1.4); opacity: 0; }
+.led-ambient-halo {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--led-blue-ambient);
+  filter: blur(15px);
+  pointer-events: none;
+  animation: pulseHalo 2s infinite ease-in-out;
 }
 
-.hero-content {
+@keyframes pulseHalo {
+  0%, 100% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* VFD Text Readouts */
+.vfd-readout-unit {
   flex-grow: 1;
+  z-index: 6;
 }
 
-.hero-tag {
-  font-size: 0.75rem;
+.vfd-tag {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--color-checking);
+  color: #93c5fd;
+  text-shadow: 0 0 10px rgba(147, 197, 253, 0.6);
   margin-bottom: 0.25rem;
 }
 
-.hero-title {
-  font-size: 1.6rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  margin-bottom: 0.3rem;
-  color: var(--text-main);
+.vfd-headline {
+  font-family: var(--font-sans);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #f8fafc;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  margin-bottom: 0.35rem;
 }
 
-.hero-desc {
+.vfd-subtext {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: #94a3b8;
+  font-family: var(--font-sans);
 }
 
-.last-checked {
-  font-size: 0.8rem;
-  color: var(--text-dim);
+.digital-timestamp-box {
+  z-index: 6;
   font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: #64748b;
   align-self: flex-start;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Status variants */
-.hero-status.status-online {
-  border-color: rgba(16, 185, 129, 0.4);
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--bg-card) 100%);
+/* Status Variations for Master Bezel */
+.master-display-bezel.status-online .led-lens {
+  background: radial-gradient(circle at 35% 35%, var(--led-green-core) 0%, var(--led-green) 50%, #047857 100%);
+  box-shadow: 0 0 35px var(--led-green-glow), 0 0 15px var(--led-green), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
 }
-.hero-status.status-online .status-beacon {
-  background: var(--color-online);
-  box-shadow: 0 0 24px var(--color-online-glow);
+.master-display-bezel.status-online .led-ambient-halo {
+  background: var(--led-green-ambient);
 }
-.hero-status.status-online .status-beacon-pulse {
-  background: var(--color-online-glow);
+.master-display-bezel.status-online .vfd-tag {
+  color: #34d399;
+  text-shadow: 0 0 12px rgba(52, 211, 153, 0.7);
 }
-.hero-status.status-online .hero-tag {
-  color: var(--color-online);
-}
-
-.hero-status.status-offline {
-  border-color: rgba(239, 68, 68, 0.4);
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, var(--bg-card) 100%);
-}
-.hero-status.status-offline .status-beacon {
-  background: var(--color-offline);
-  box-shadow: 0 0 24px var(--color-offline-glow);
-}
-.hero-status.status-offline .status-beacon-pulse {
-  background: var(--color-offline-glow);
-}
-.hero-status.status-offline .hero-tag {
-  color: var(--color-offline);
+.master-display-bezel.status-online .vfd-headline {
+  color: #ecfdf5;
+  text-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
 }
 
-.hero-status.status-degraded {
-  border-color: rgba(245, 158, 11, 0.4);
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, var(--bg-card) 100%);
+.master-display-bezel.status-offline .led-lens {
+  background: radial-gradient(circle at 35% 35%, var(--led-red-core) 0%, var(--led-red) 50%, #b91c1c 100%);
+  box-shadow: 0 0 35px var(--led-red-glow), 0 0 15px var(--led-red), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
 }
-.hero-status.status-degraded .status-beacon {
-  background: var(--color-degraded);
-  box-shadow: 0 0 24px var(--color-degraded-glow);
+.master-display-bezel.status-offline .led-ambient-halo {
+  background: var(--led-red-ambient);
 }
-.hero-status.status-degraded .status-beacon-pulse {
-  background: var(--color-degraded-glow);
+.master-display-bezel.status-offline .vfd-tag {
+  color: #f87171;
+  text-shadow: 0 0 12px rgba(248, 113, 113, 0.7);
 }
-.hero-status.status-degraded .hero-tag {
-  color: var(--color-degraded);
+.master-display-bezel.status-offline .vfd-headline {
+  color: #fff1f2;
+  text-shadow: 0 0 18px rgba(239, 68, 68, 0.4);
 }
 
-/* Metrics Grid */
-.metrics-grid {
+.master-display-bezel.status-degraded .led-lens {
+  background: radial-gradient(circle at 35% 35%, var(--led-amber-core) 0%, var(--led-amber) 50%, #b45309 100%);
+  box-shadow: 0 0 35px var(--led-amber-glow), 0 0 15px var(--led-amber), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
+}
+.master-display-bezel.status-degraded .led-ambient-halo {
+  background: var(--led-amber-ambient);
+}
+.master-display-bezel.status-degraded .vfd-tag {
+  color: #fbbf24;
+  text-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
+}
+
+/* ==========================================================================
+   4 HARDWARE GAUGES (ANALOG / LCD METER WELLS)
+   ========================================================================== */
+
+.gauges-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  gap: 1.2rem;
   margin-bottom: 1.5rem;
 }
 
-.metric-card {
-  padding: 1.25rem 1.5rem;
+.hardware-gauge {
+  background: var(--chassis-metal);
+  border: 1px solid var(--chassis-border-top);
+  border-bottom: 2px solid var(--chassis-border-bottom);
+  border-radius: 10px;
+  padding: 1.1rem 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  position: relative;
 }
 
-.metric-label {
-  font-size: 0.75rem;
-  font-weight: 600;
+/* Mini Corner Screws on each gauge */
+.gauge-screw {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--screw-metal);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+}
+.gauge-screw.tl { top: 6px; left: 6px; }
+.gauge-screw.tr { top: 6px; right: 6px; }
+
+.gauge-label-emboss {
+  font-size: 0.72rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-dim);
-  margin-bottom: 0.4rem;
-}
-
-.metric-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  font-family: var(--font-mono);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
-  color: var(--text-main);
-}
-
-.metric-value .unit {
-  font-size: 0.9rem;
-  color: var(--text-dim);
-  font-family: var(--font-sans);
-  margin-left: 0.15rem;
-}
-
-.metric-sub {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-}
-
-/* Footer */
-.footer {
+  letter-spacing: 0.06em;
+  color: var(--text-engraved);
+  text-shadow: var(--text-engraved-shadow);
+  margin-bottom: 0.6rem;
   text-align: center;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  padding: 1.5rem 0;
 }
 
-.footer a {
-  color: #38bdf8;
-  text-decoration: none;
+/* Recessed LCD Screen Well */
+.lcd-display-well {
+  background: var(--screen-well-bg);
+  border-radius: 6px;
+  border: 1px solid #000000;
+  border-top: 2px solid var(--screen-border-top);
+  border-bottom: 1px solid var(--screen-border-bottom);
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 0.6rem;
+  text-align: center;
 }
 
-.footer a:hover {
-  text-decoration: underline;
+.lcd-value {
+  font-family: var(--font-mono);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--vfd-text);
+  text-shadow: var(--vfd-glow);
+  margin-bottom: 0.15rem;
+}
+
+.lcd-value .unit {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-left: 2px;
+}
+
+.lcd-caption {
+  font-size: 0.76rem;
+  color: #64748b;
+  font-family: var(--font-sans);
+}
+
+/* ==========================================================================
+   FOOTER (STAMPED SERIAL NUMBER PLATE)
+   ========================================================================== */
+
+.footer-plate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 1rem;
+}
+
+.plate-screw {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--screw-metal);
+  box-shadow: var(--screw-shadow);
+}
+
+.serial-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-dimmed);
+  text-shadow: var(--text-engraved-shadow);
+  text-transform: uppercase;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .metrics-grid {
+@media (max-width: 860px) {
+  .gauges-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .hero-status {
+  .master-display-bezel {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1rem;
+    gap: 1.2rem;
   }
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .header-controls {
-    width: 100%;
-    justify-content: flex-start;
+  .rack-chassis {
+    padding: 1.8rem 1.4rem;
   }
 }

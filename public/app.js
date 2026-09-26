@@ -154,7 +154,7 @@ const countdownBar = document.getElementById('countdownBar');
 const countdownLabel = document.getElementById('countdownLabel');
 
 const langSelect = document.getElementById('langSelect');
-const themeButtons = document.querySelectorAll('.theme-btn');
+const themeButtons = document.querySelectorAll('.rocker-btn, .theme-btn');
 
 // Initializer
 document.addEventListener('DOMContentLoaded', () => {
@@ -295,7 +295,7 @@ async function performCheck() {
 }
 
 function renderStatusData(data) {
-  heroCard.className = `hero-status card status-${data.status}`;
+  heroCard.className = `master-display-bezel status-${data.status}`;
 
   if (data.status === 'online') {
     statusTag.textContent = t('heroTagOnline');
@@ -303,7 +303,7 @@ function renderStatusData(data) {
     statusDesc.textContent = t('heroDescOnline');
 
     overallMetric.textContent = t('statusWorking');
-    overallMetric.style.color = 'var(--color-online)';
+    overallMetric.style.color = 'var(--led-green)';
     overallSub.textContent = '163.239.88.115';
   } else if (data.status === 'degraded') {
     statusTag.textContent = t('heroTagDegraded');
@@ -311,7 +311,7 @@ function renderStatusData(data) {
     statusDesc.textContent = t('heroDescDegraded');
 
     overallMetric.textContent = t('statusDegraded');
-    overallMetric.style.color = 'var(--color-degraded)';
+    overallMetric.style.color = 'var(--led-amber)';
     overallSub.textContent = '163.239.88.115';
   } else {
     statusTag.textContent = t('heroTagOffline');
@@ -319,7 +319,7 @@ function renderStatusData(data) {
     statusDesc.textContent = t('heroDescOffline');
 
     overallMetric.textContent = t('statusNotWorking');
-    overallMetric.style.color = 'var(--color-offline)';
+    overallMetric.style.color = 'var(--led-red)';
     overallSub.textContent = '163.239.88.115';
   }
 
@@ -329,22 +329,22 @@ function renderStatusData(data) {
   // HTTP Metric
   if (data.http && data.http.statusCode) {
     httpMetric.textContent = `${data.http.statusCode}`;
-    httpMetric.style.color = data.http.statusCode < 400 ? 'var(--color-online)' : 'var(--color-degraded)';
+    httpMetric.style.color = data.http.statusCode < 400 ? 'var(--led-green)' : 'var(--led-amber)';
     httpSub.textContent = data.http.statusText || 'HTTP OK';
   } else {
     httpMetric.textContent = t('timeoutText');
-    httpMetric.style.color = 'var(--color-offline)';
+    httpMetric.style.color = 'var(--led-red)';
     httpSub.textContent = t('metricHttpWait');
   }
 
   // TCP Metric
   if (data.tcp && data.tcp.connected) {
     tcpMetric.textContent = t('openText');
-    tcpMetric.style.color = 'var(--color-online)';
+    tcpMetric.style.color = 'var(--led-green)';
     tcpSub.textContent = `${data.tcp.latencyMs} ms`;
   } else {
     tcpMetric.textContent = t('closedText');
-    tcpMetric.style.color = 'var(--color-offline)';
+    tcpMetric.style.color = 'var(--led-red)';
     tcpSub.textContent = t('metricTcpSub');
   }
 
@@ -352,11 +352,11 @@ function renderStatusData(data) {
   const effectiveLatency = (data.http && data.http.latencyMs) || (data.tcp && data.tcp.latencyMs);
   if (effectiveLatency) {
     latencyMetric.innerHTML = `${effectiveLatency} <span class="unit">ms</span>`;
-    latencyMetric.style.color = 'var(--text-main)';
+    latencyMetric.style.color = 'var(--vfd-text)';
     latencySub.textContent = t('metricLatencySub');
   } else {
     latencyMetric.innerHTML = `&infin; <span class="unit">ms</span>`;
-    latencyMetric.style.color = 'var(--color-offline)';
+    latencyMetric.style.color = 'var(--led-red)';
     latencySub.textContent = t('timeoutText');
   }
 }
