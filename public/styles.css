@@ -1,96 +1,83 @@
 /* ==========================================================================
-   SKEUOMORPHIC HARDWARE RACK THEME (DARK / LIGHT / SYSTEM)
+   LIQUID GLASS (iOS 27 STYLE) - SYSTEM / DARK / LIGHT
    ========================================================================== */
 
 :root {
-  /* Common metrics */
-  --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Share Tech Mono', monospace;
-  
-  /* Status Lamp Colors */
-  --led-green: #10b981;
-  --led-green-core: #6ee7b7;
-  --led-green-glow: rgba(16, 185, 129, 0.7);
-  --led-green-ambient: rgba(16, 185, 129, 0.15);
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --led-red: #ef4444;
-  --led-red-core: #fca5a5;
-  --led-red-glow: rgba(239, 68, 68, 0.75);
-  --led-red-ambient: rgba(239, 68, 68, 0.18);
+  /* Fluid Palette - Bioluminescent Glows */
+  --liquid-cyan: #38bdf8;
+  --liquid-indigo: #6366f1;
+  --liquid-violet: #a855f7;
+  --liquid-emerald: #10b981;
+  --liquid-rose: #f43f5e;
+  --liquid-amber: #f59e0b;
 
-  --led-amber: #f59e0b;
-  --led-amber-core: #fde68a;
-  --led-amber-glow: rgba(245, 158, 11, 0.7);
-  --led-amber-ambient: rgba(245, 158, 11, 0.15);
+  /* Status Colors */
+  --status-online: #10b981;
+  --status-online-glow: rgba(16, 185, 129, 0.65);
+  --status-online-halo: rgba(16, 185, 129, 0.22);
 
-  --led-blue: #3b82f6;
-  --led-blue-core: #93c5fd;
-  --led-blue-glow: rgba(59, 130, 246, 0.7);
-  --led-blue-ambient: rgba(59, 130, 246, 0.15);
+  --status-offline: #f43f5e;
+  --status-offline-glow: rgba(244, 63, 94, 0.7);
+  --status-offline-halo: rgba(244, 63, 94, 0.24);
 
-  /* Default Dark Industrial Rack */
-  --desk-bg: radial-gradient(circle at 50% 20%, #1a1e26 0%, #0d1017 60%, #06070a 100%);
-  --chassis-metal: linear-gradient(180deg, #373e4a 0%, #282d37 25%, #20242c 70%, #1a1d23 100%);
-  --chassis-border-top: rgba(255, 255, 255, 0.22);
-  --chassis-border-bottom: #0e1014;
-  --chassis-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), 0 10px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  
-  --text-engraved: #e2e8f0;
-  --text-engraved-shadow: 0 -1px 1px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.12);
-  --text-dimmed: #8492a6;
-  
-  --bezel-bg: linear-gradient(180deg, #181b22 0%, #222731 100%);
-  --bezel-border: #14171d;
-  --bezel-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8), 0 1px 0 rgba(255, 255, 255, 0.1);
-  
-  --screen-well-bg: #090c10;
-  --screen-border-top: #030406;
-  --screen-border-bottom: rgba(255, 255, 255, 0.08);
-  --screen-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.95), inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
-  
-  --screw-metal: linear-gradient(135deg, #707886 0%, #464c56 50%, #2c3038 100%);
-  --screw-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-  --screw-slot: #15181d;
+  --status-degraded: #f59e0b;
+  --status-degraded-glow: rgba(245, 158, 11, 0.65);
+  --status-degraded-halo: rgba(245, 158, 11, 0.22);
 
-  --btn-top: linear-gradient(180deg, #444c5a 0%, #2a303a 50%, #1e222a 100%);
-  --btn-shadow: 0 4px 0 #12151a, 0 6px 12px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-  --btn-text: #f8fafc;
-  
-  --vfd-text: #38bdf8;
-  --vfd-glow: 0 0 12px rgba(56, 189, 248, 0.45);
+  --status-checking: #0ea5e9;
+  --status-checking-glow: rgba(14, 165, 233, 0.65);
+  --status-checking-halo: rgba(14, 165, 233, 0.22);
+
+  /* Dark Liquid Theme (Default) */
+  --stage-bg: #030712;
+  --glass-bg: rgba(255, 255, 255, 0.055);
+  --glass-bg-hover: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.16);
+  --glass-rim: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6), 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+  --glass-inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35), inset 0 -1px 2px rgba(0, 0, 0, 0.4);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+  --text-muted: #64748b;
+
+  --island-bg: rgba(15, 23, 42, 0.65);
+  --pill-bg: rgba(255, 255, 255, 0.06);
+  --pill-border: rgba(255, 255, 255, 0.12);
+
+  --blob-1: rgba(99, 102, 241, 0.35);
+  --blob-2: rgba(168, 85, 247, 0.32);
+  --blob-3: rgba(14, 165, 233, 0.3);
+  --blob-4: rgba(16, 185, 129, 0.25);
 }
 
-/* Light Vintage Laboratory Instrument Theme */
+/* Light Liquid Crystal Theme */
 [data-theme="light"] {
-  --desk-bg: radial-gradient(circle at 50% 20%, #e2e8f0 0%, #cbd5e1 60%, #94a3b8 100%);
-  --chassis-metal: linear-gradient(180deg, #ffffff 0%, #eceff4 30%, #dde2e9 70%, #cfd6df 100%);
-  --chassis-border-top: rgba(255, 255, 255, 0.9);
-  --chassis-border-bottom: #94a3b8;
-  --chassis-shadow: 0 25px 60px rgba(15, 23, 42, 0.25), 0 8px 16px rgba(15, 23, 42, 0.15), inset 0 1px 0 #ffffff;
+  --stage-bg: #f0f4f9;
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-hover: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-rim: rgba(255, 255, 255, 0.95);
+  --glass-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12), 0 8px 16px -6px rgba(15, 23, 42, 0.06);
+  --glass-inner-shadow: inset 0 1px 2px #ffffff, inset 0 -1px 2px rgba(15, 23, 42, 0.05);
 
-  --text-engraved: #1e293b;
-  --text-engraved-shadow: 0 1px 0 rgba(255, 255, 255, 0.9), 0 -1px 1px rgba(0, 0, 0, 0.1);
-  --text-dimmed: #64748b;
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-tertiary: #64748b;
+  --text-muted: #94a3b8;
 
-  --bezel-bg: linear-gradient(180deg, #cfd6df 0%, #e8edf3 100%);
-  --bezel-border: #94a3b8;
-  --bezel-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 1px 0 #ffffff;
+  --island-bg: rgba(255, 255, 255, 0.72);
+  --pill-bg: rgba(0, 0, 0, 0.04);
+  --pill-border: rgba(0, 0, 0, 0.08);
 
-  --screen-well-bg: #111827;
-  --screen-border-top: #030712;
-  --screen-border-bottom: rgba(255, 255, 255, 0.6);
-  --screen-shadow: inset 0 8px 24px rgba(0, 0, 0, 0.95), inset 0 1px 2px rgba(0, 0, 0, 0.9), 0 1px 0 #ffffff;
-
-  --screw-metal: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
-  --screw-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), inset 0 1px 1px #ffffff;
-  --screw-slot: #475569;
-
-  --btn-top: linear-gradient(180deg, #ffffff 0%, #e2e8f0 50%, #cbd5e1 100%);
-  --btn-shadow: 0 4px 0 #94a3b8, 0 6px 12px rgba(0, 0, 0, 0.2), inset 0 1px 1px #ffffff;
-  --btn-text: #0f172a;
-  
-  --vfd-text: #38bdf8;
-  --vfd-glow: 0 0 12px rgba(56, 189, 248, 0.45);
+  --blob-1: rgba(147, 197, 253, 0.55);
+  --blob-2: rgba(216, 180, 254, 0.5);
+  --blob-3: rgba(165, 243, 252, 0.55);
+  --blob-4: rgba(167, 243, 208, 0.45);
 }
 
 * {
@@ -100,322 +87,384 @@
 }
 
 body {
-  background: var(--desk-bg);
-  min-height: 100vh;
+  background-color: var(--stage-bg);
+  color: var(--text-primary);
   font-family: var(--font-sans);
-  color: var(--text-engraved);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem 1rem;
-  transition: background 0.3s ease;
+  padding: 2.5rem 1.25rem;
+  transition: background-color 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Desk surface texture */
-.desk-surface {
+/* ==========================================================================
+   FLOATING FLUID MESH ORBS (CAUSTIC AURA)
+   ========================================================================== */
+
+.fluid-stage {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
-  background-size: 24px 24px;
+  overflow: hidden;
   pointer-events: none;
   z-index: 0;
 }
 
+.fluid-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.85;
+  will-change: transform;
+}
+
+.blob-primary {
+  width: 50vw;
+  height: 50vw;
+  top: -10vw;
+  left: -10vw;
+  background: radial-gradient(circle, var(--blob-1) 0%, transparent 70%);
+  animation: floatFluid1 18s ease-in-out infinite alternate;
+}
+
+.blob-secondary {
+  width: 45vw;
+  height: 45vw;
+  top: 15vh;
+  right: -8vw;
+  background: radial-gradient(circle, var(--blob-2) 0%, transparent 70%);
+  animation: floatFluid2 22s ease-in-out infinite alternate;
+}
+
+.blob-accent {
+  width: 55vw;
+  height: 55vw;
+  bottom: -15vh;
+  left: 20vw;
+  background: radial-gradient(circle, var(--blob-3) 0%, transparent 70%);
+  animation: floatFluid3 25s ease-in-out infinite alternate;
+}
+
+.blob-glow {
+  width: 35vw;
+  height: 35vw;
+  top: 35vh;
+  left: 30vw;
+  background: radial-gradient(circle, var(--blob-4) 0%, transparent 70%);
+  animation: floatFluid1 28s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatFluid1 {
+  0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  50% { transform: translate(6vw, 8vh) scale(1.12) rotate(45deg); }
+  100% { transform: translate(-4vw, 12vh) scale(0.95) rotate(90deg); }
+}
+
+@keyframes floatFluid2 {
+  0% { transform: translate(0, 0) scale(1.05) rotate(0deg); }
+  50% { transform: translate(-8vw, -6vh) scale(0.92) rotate(-60deg); }
+  100% { transform: translate(5vw, 6vh) scale(1.15) rotate(-120deg); }
+}
+
+@keyframes floatFluid3 {
+  0% { transform: translate(0, 0) scale(0.98); }
+  50% { transform: translate(-10vw, -10vh) scale(1.2); }
+  100% { transform: translate(8vw, -5vh) scale(1.05); }
+}
+
 /* ==========================================================================
-   RACK CHASSIS (HEAVY BRUSHED METAL ENCLOSURE)
+   LIQUID GLASS CHASSIS & VIEWPORT
    ========================================================================== */
 
-.rack-chassis {
+.liquid-viewport {
   width: 100%;
-  max-width: 940px;
-  background: var(--chassis-metal);
-  border-radius: 18px;
-  border-top: 1px solid var(--chassis-border-top);
-  border-bottom: 3px solid var(--chassis-border-bottom);
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-  border-right: 1px solid rgba(0, 0, 0, 0.4);
-  box-shadow: var(--chassis-shadow);
-  padding: 2.2rem 2.5rem;
+  max-width: 960px;
   position: relative;
   z-index: 1;
-  transition: all 0.3s ease;
 }
 
-/* Rack Chassis Screws */
-.rack-screw {
+.liquid-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Base Liquid Glass Card Surface */
+.liquid-glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(48px) saturate(220%) contrast(102%);
+  -webkit-backdrop-filter: blur(48px) saturate(220%) contrast(102%);
+  border: 1px solid var(--glass-border);
+  border-radius: 28px;
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-card:hover {
+  background: var(--glass-bg-hover);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+/* Liquid Specular Rim & Caustic Glare */
+.glass-caustic-layer {
   position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--screw-metal);
-  box-shadow: var(--screw-shadow);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.03) 40%, transparent 80%);
+  pointer-events: none;
+  z-index: 2;
+  border-radius: inherit;
 }
 
-.screw-slot {
-  width: 10px;
-  height: 2px;
-  background: var(--screw-slot);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.9);
-}
-
-.screw-tl { top: 12px; left: 14px; }
-.screw-tr { top: 12px; right: 14px; }
-.screw-bl { bottom: 12px; left: 14px; }
-.screw-br { bottom: 12px; right: 14px; }
-
-.screw-tl .screw-slot { transform: rotate(35deg); }
-.screw-tr .screw-slot { transform: rotate(115deg); }
-.screw-bl .screw-slot { transform: rotate(70deg); }
-.screw-br .screw-slot { transform: rotate(-25deg); }
-
-/* Chassis Ventilation Grilles */
-.chassis-vents {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 1.5rem;
-}
-
-.chassis-vents span {
-  width: 50px;
-  height: 5px;
-  border-radius: 3px;
-  background: #090b0e;
-  box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-.bottom-vents {
-  margin-top: 1.8rem;
-  margin-bottom: 0.8rem;
+.glass-rim-highlight {
+  position: absolute;
+  top: 0;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--glass-rim) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
 }
 
 /* ==========================================================================
-   HEADER & METALLIC BADGES
+   DYNAMIC ISLAND CAPSULE HEADER
    ========================================================================== */
 
-.header {
+.liquid-island {
+  background: var(--island-bg);
+  backdrop-filter: blur(50px) saturate(220%);
+  -webkit-backdrop-filter: blur(50px) saturate(220%);
+  border: 1px solid var(--glass-border);
+  border-radius: 36px;
+  box-shadow: var(--glass-shadow), var(--glass-inner-shadow);
+  padding: 1.25rem 2rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
   flex-wrap: wrap;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.metal-badge {
+.island-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: linear-gradient(180deg, #475569 0%, #334155 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid #0f172a;
-  border-radius: 4px;
-  padding: 2px 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #38bdf8;
   margin-bottom: 0.4rem;
 }
 
-.badge-text {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #f8fafc;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
-}
-
-.badge-rivet {
-  width: 4px;
-  height: 4px;
+.pulsing-fluid-dot {
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #cbd5e1;
-  box-shadow: inset 0 1px 1px #ffffff, 0 1px 1px rgba(0, 0, 0, 0.8);
+  background: #38bdf8;
+  box-shadow: 0 0 8px #38bdf8;
+  animation: pulseDot 2s infinite ease-in-out;
 }
 
-.stamped-title {
-  font-size: 1.7rem;
+@keyframes pulseDot {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+.liquid-title {
+  font-size: 1.65rem;
   font-weight: 800;
-  letter-spacing: -0.01em;
-  color: var(--text-engraved);
-  text-shadow: var(--text-engraved-shadow);
-  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
 }
 
-.target-plate {
+.target-capsule {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 0.88rem;
-  color: var(--text-dimmed);
+  color: var(--text-secondary);
 }
 
-.plate-label {
-  font-weight: 700;
-  text-shadow: var(--text-engraved-shadow);
+.capsule-label {
+  font-weight: 600;
+  color: var(--text-tertiary);
 }
 
-.lcd-target code {
+.liquid-link {
+  text-decoration: none;
+}
+
+.liquid-link code {
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  background: #090c10;
-  color: #38bdf8;
+  font-weight: 600;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: var(--liquid-cyan);
   padding: 0.2rem 0.55rem;
-  border-radius: 5px;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
 }
 
-.host-stamp {
+.liquid-link:hover code {
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+}
+
+.sub-pill {
   font-size: 0.78rem;
   font-family: var(--font-mono);
-  color: var(--text-dimmed);
-  text-shadow: var(--text-engraved-shadow);
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
-   TACTILE HARDWARE CONTROLS
+   DYNAMIC CONTROLS & FLUID PILLS
    ========================================================================== */
 
-.header-controls {
+.island-controls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   flex-wrap: wrap;
 }
 
-.tactile-control {
+.glass-select-pill {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  backdrop-filter: blur(16px);
+  transition: all 0.2s ease;
 }
 
-.stamped-label {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-shadow: var(--text-engraved-shadow);
-  color: var(--text-dimmed);
+.glass-select-pill:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.09);
 }
 
-.control-bezel {
-  background: var(--bezel-bg);
-  border: 1px solid var(--bezel-border);
-  box-shadow: var(--bezel-shadow);
-  border-radius: 7px;
-  padding: 2px;
+.glass-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
 }
 
-.hardware-select {
+.liquid-select {
   background: transparent;
   border: none;
-  color: var(--text-engraved);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 0.82rem;
   font-weight: 600;
-  padding: 0.4rem 0.6rem;
   cursor: pointer;
   outline: none;
-  text-shadow: var(--text-engraved-shadow);
 }
 
-.hardware-select option {
-  background: #1e222a;
-  color: #ffffff;
+.liquid-select option {
+  background: #0f172a;
+  color: #f8fafc;
 }
 
-/* 3D Rocker Theme Switcher */
-.theme-rocker-wrapper {
+/* Liquid Glass Segmented Dock */
+.liquid-segmented-dock {
   display: flex;
-  background: var(--screen-well-bg);
-  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
+  align-items: center;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  border-radius: 9999px;
   padding: 3px;
-  gap: 3px;
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  gap: 2px;
+  backdrop-filter: blur(20px);
 }
 
-.rocker-btn {
-  background: var(--btn-top);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  color: var(--text-dimmed);
+.theme-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-tertiary);
   width: 32px;
   height: 30px;
-  border-radius: 5px;
+  border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.1s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.rocker-btn:hover {
-  color: var(--text-engraved);
+.theme-btn:hover {
+  color: var(--text-primary);
 }
 
-.rocker-btn.active {
-  background: #0284c7;
-  color: #ffffff;
-  border-color: #38bdf8;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 10px rgba(56, 189, 248, 0.4);
-  transform: translateY(1px);
+.theme-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--liquid-cyan);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
-/* Chunky Push Button with Chrome Ring */
-.tactile-push-btn {
+[data-theme="light"] .theme-btn.active {
+  background: #ffffff;
+  color: #0284c7;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.12);
+}
+
+/* Liquid Glass Push Button */
+.liquid-glass-btn {
   position: relative;
-  background: transparent;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  outline: none;
-}
-
-.btn-chrome-collar {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, #cbd5e1 0%, #64748b 50%, #334155 100%);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.6), inset 0 1px 1px #ffffff;
-  z-index: 1;
-}
-
-.btn-cap {
-  position: relative;
-  z-index: 2;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--btn-top);
-  color: var(--btn-text);
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.8) 0%, rgba(99, 102, 241, 0.85) 100%);
+  color: #ffffff;
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 700;
-  padding: 0.55rem 1rem;
-  border-radius: 7px;
-  box-shadow: var(--btn-shadow);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  transition: all 0.08s ease;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 20px -4px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tactile-push-btn:hover .btn-cap {
-  filter: brightness(1.1);
+.liquid-reflection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, transparent 100%);
+  pointer-events: none;
 }
 
-.tactile-push-btn:active .btn-cap {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #12151a, inset 0 2px 5px rgba(0, 0, 0, 0.7);
+.liquid-glass-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px -4px rgba(56, 189, 248, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.liquid-glass-btn:active {
+  transform: translateY(1px) scale(0.97);
 }
 
 .spin-icon {
@@ -432,41 +481,25 @@ body {
 }
 
 /* ==========================================================================
-   LED VU METER BAR / COUNTDOWN
+   MOLTEN FLUID PROGRESS LINE
    ========================================================================== */
 
-.vu-meter-housing {
-  margin-bottom: 1.6rem;
-}
-
-.vu-glass {
-  background: var(--screen-well-bg);
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  border-radius: 6px;
-  height: 10px;
-  padding: 2px;
+.liquid-progress-well {
+  height: 4px;
+  background: var(--pill-bg);
+  border-radius: 9999px;
   overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.vu-bar {
+.liquid-progress-bar {
   height: 100%;
   width: 100%;
-  background: linear-gradient(90deg, #10b981 0%, #3b82f6 70%, #f59e0b 90%, #ef4444 100%);
-  border-radius: 4px;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  background: linear-gradient(90deg, #38bdf8 0%, #6366f1 50%, #10b981 100%);
+  border-radius: 9999px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.7);
   transition: width 1s linear;
-}
-
-.vu-scale {
-  display: flex;
-  justify-content: space-between;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--text-dimmed);
-  margin-top: 3px;
-  text-shadow: var(--text-engraved-shadow);
-  padding: 0 2px;
 }
 
 .countdown-label {
@@ -474,320 +507,285 @@ body {
 }
 
 /* ==========================================================================
-   HERO MASTER DISPLAY BEZEL (CRT / VFD SCREEN + DOME LED)
+   HERO LIQUID GLASS CARD (BIOLUMINESCENT STATUS)
    ========================================================================== */
 
-.master-display-bezel {
-  background: var(--screen-well-bg);
-  border: 2px solid #000000;
-  border-top: 3px solid var(--screen-border-top);
-  border-bottom: 1px solid var(--screen-border-bottom);
-  border-radius: 14px;
-  box-shadow: var(--screen-shadow);
-  padding: 2rem 2.2rem;
-  margin-bottom: 1.8rem;
+.hero-liquid {
+  padding: 2.2rem 2.6rem;
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 2.2rem;
+  border-radius: 32px;
+}
+
+/* Bioluminescent Floating Liquid Orb */
+.liquid-orb-pod {
   position: relative;
-  overflow: hidden;
-}
-
-/* Realistic Glass Glare Reflection */
-.screen-glass-glare {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 25%, transparent 50%);
-  pointer-events: none;
-  z-index: 5;
-}
-
-/* Subtle CRT scanline effect */
-.master-display-bezel::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0px, rgba(0, 0, 0, 0.15) 1px, transparent 1px, transparent 3px);
-  pointer-events: none;
-  z-index: 4;
-}
-
-/* 3D Convex Dome LED Lamp Assembly */
-.led-assembly {
-  position: relative;
-  width: 76px;
-  height: 76px;
+  width: 84px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  z-index: 6;
+  z-index: 4;
 }
 
-.led-chrome-bezel {
-  width: 66px;
-  height: 66px;
+.liquid-orb {
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: radial-gradient(circle, #e2e8f0 30%, #64748b 70%, #1e293b 100%);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8), inset 0 2px 2px #ffffff, inset 0 -2px 3px rgba(0, 0, 0, 0.8);
+  position: relative;
+  background: radial-gradient(circle at 35% 30%, #7dd3fc 0%, var(--status-checking) 55%, #0284c7 100%);
+  box-shadow: 0 0 35px var(--status-checking-glow), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 6px;
 }
 
-.led-lens {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  position: relative;
-  background: radial-gradient(circle at 35% 35%, #93c5fd 0%, #3b82f6 50%, #1d4ed8 100%);
-  box-shadow: 0 0 25px var(--led-blue-glow), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
-  transition: all 0.4s ease;
-}
-
-.led-specular {
+.orb-specular {
   position: absolute;
-  top: 6px;
-  left: 10px;
-  width: 14px;
-  height: 9px;
+  top: 8px;
+  left: 11px;
+  width: 16px;
+  height: 10px;
   border-radius: 50%;
   background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 80%);
   transform: rotate(-25deg);
 }
 
-.led-ambient-halo {
+.orb-ripple {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 96px;
+  height: 96px;
   border-radius: 50%;
-  background: var(--led-blue-ambient);
-  filter: blur(15px);
+  border: 1.5px solid var(--status-checking);
+  background: var(--status-checking-halo);
+  animation: fluidPulse 2.4s infinite cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: none;
-  animation: pulseHalo 2s infinite ease-in-out;
 }
 
-@keyframes pulseHalo {
-  0%, 100% { transform: scale(0.9); opacity: 0.6; }
-  50% { transform: scale(1.2); opacity: 1; }
+@keyframes fluidPulse {
+  0% { transform: scale(0.65); opacity: 0.9; }
+  100% { transform: scale(1.35); opacity: 0; }
 }
 
-/* VFD Text Readouts */
-.vfd-readout-unit {
+.hero-liquid-details {
   flex-grow: 1;
-  z-index: 6;
+  z-index: 4;
 }
 
-.vfd-tag {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #93c5fd;
-  text-shadow: 0 0 10px rgba(147, 197, 253, 0.6);
-  margin-bottom: 0.25rem;
-}
-
-.vfd-headline {
-  font-family: var(--font-sans);
-  font-size: 1.85rem;
-  font-weight: 800;
-  color: #f8fafc;
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
-  margin-bottom: 0.35rem;
-}
-
-.vfd-subtext {
-  font-size: 0.95rem;
-  color: #94a3b8;
-  font-family: var(--font-sans);
-}
-
-.digital-timestamp-box {
-  z-index: 6;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: #64748b;
-  align-self: flex-start;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 0.3rem 0.6rem;
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* Status Variations for Master Bezel */
-.master-display-bezel.status-online .led-lens {
-  background: radial-gradient(circle at 35% 35%, var(--led-green-core) 0%, var(--led-green) 50%, #047857 100%);
-  box-shadow: 0 0 35px var(--led-green-glow), 0 0 15px var(--led-green), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
-}
-.master-display-bezel.status-online .led-ambient-halo {
-  background: var(--led-green-ambient);
-}
-.master-display-bezel.status-online .vfd-tag {
-  color: #34d399;
-  text-shadow: 0 0 12px rgba(52, 211, 153, 0.7);
-}
-.master-display-bezel.status-online .vfd-headline {
-  color: #ecfdf5;
-  text-shadow: 0 0 18px rgba(16, 185, 129, 0.4);
-}
-
-.master-display-bezel.status-offline .led-lens {
-  background: radial-gradient(circle at 35% 35%, var(--led-red-core) 0%, var(--led-red) 50%, #b91c1c 100%);
-  box-shadow: 0 0 35px var(--led-red-glow), 0 0 15px var(--led-red), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
-}
-.master-display-bezel.status-offline .led-ambient-halo {
-  background: var(--led-red-ambient);
-}
-.master-display-bezel.status-offline .vfd-tag {
-  color: #f87171;
-  text-shadow: 0 0 12px rgba(248, 113, 113, 0.7);
-}
-.master-display-bezel.status-offline .vfd-headline {
-  color: #fff1f2;
-  text-shadow: 0 0 18px rgba(239, 68, 68, 0.4);
-}
-
-.master-display-bezel.status-degraded .led-lens {
-  background: radial-gradient(circle at 35% 35%, var(--led-amber-core) 0%, var(--led-amber) 50%, #b45309 100%);
-  box-shadow: 0 0 35px var(--led-amber-glow), 0 0 15px var(--led-amber), inset 0 -4px 6px rgba(0, 0, 0, 0.6);
-}
-.master-display-bezel.status-degraded .led-ambient-halo {
-  background: var(--led-amber-ambient);
-}
-.master-display-bezel.status-degraded .vfd-tag {
-  color: #fbbf24;
-  text-shadow: 0 0 12px rgba(251, 191, 36, 0.7);
-}
-
-/* ==========================================================================
-   4 HARDWARE GAUGES (ANALOG / LCD METER WELLS)
-   ========================================================================== */
-
-.gauges-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
-.hardware-gauge {
-  background: var(--chassis-metal);
-  border: 1px solid var(--chassis-border-top);
-  border-bottom: 2px solid var(--chassis-border-bottom);
-  border-radius: 10px;
-  padding: 1.1rem 1rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  position: relative;
-}
-
-/* Mini Corner Screws on each gauge */
-.gauge-screw {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--screw-metal);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
-}
-.gauge-screw.tl { top: 6px; left: 6px; }
-.gauge-screw.tr { top: 6px; right: 6px; }
-
-.gauge-label-emboss {
-  font-size: 0.72rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-engraved);
-  text-shadow: var(--text-engraved-shadow);
-  margin-bottom: 0.6rem;
-  text-align: center;
-}
-
-/* Recessed LCD Screen Well */
-.lcd-display-well {
-  background: var(--screen-well-bg);
-  border-radius: 6px;
-  border: 1px solid #000000;
-  border-top: 2px solid var(--screen-border-top);
-  border-bottom: 1px solid var(--screen-border-bottom);
-  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.12);
-  padding: 0.75rem 0.6rem;
-  text-align: center;
-}
-
-.lcd-value {
-  font-family: var(--font-mono);
-  font-size: 1.45rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--vfd-text);
-  text-shadow: var(--vfd-glow);
-  margin-bottom: 0.15rem;
-}
-
-.lcd-value .unit {
-  font-size: 0.82rem;
-  color: #64748b;
-  margin-left: 2px;
-}
-
-.lcd-caption {
-  font-size: 0.76rem;
-  color: #64748b;
-  font-family: var(--font-sans);
-}
-
-/* ==========================================================================
-   FOOTER (STAMPED SERIAL NUMBER PLATE)
-   ========================================================================== */
-
-.footer-plate {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding-top: 1rem;
-}
-
-.plate-screw {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--screw-metal);
-  box-shadow: var(--screw-shadow);
-}
-
-.serial-text {
+.liquid-tag-pill {
+  display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--text-dimmed);
-  text-shadow: var(--text-engraved-shadow);
+  letter-spacing: 0.1em;
   text-transform: uppercase;
+  color: var(--liquid-cyan);
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 9999px;
+  padding: 0.2rem 0.65rem;
+  margin-bottom: 0.45rem;
 }
 
-/* Responsive */
+.hero-liquid-title {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
+.hero-liquid-desc {
+  font-size: 0.96rem;
+  color: var(--text-secondary);
+}
+
+.glass-time-capsule {
+  z-index: 4;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  align-self: flex-start;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+/* Status Modes for Master Card */
+.hero-liquid.status-online {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 30px 60px -12px rgba(16, 185, 129, 0.18), var(--glass-inner-shadow);
+}
+.hero-liquid.status-online .liquid-orb {
+  background: radial-gradient(circle at 35% 30%, #6ee7b7 0%, var(--status-online) 55%, #047857 100%);
+  box-shadow: 0 0 35px var(--status-online-glow), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+.hero-liquid.status-online .orb-ripple {
+  border-color: var(--status-online);
+  background: var(--status-online-halo);
+}
+.hero-liquid.status-online .liquid-tag-pill {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.hero-liquid.status-offline {
+  border-color: rgba(244, 63, 94, 0.35);
+  box-shadow: 0 30px 60px -12px rgba(244, 63, 94, 0.18), var(--glass-inner-shadow);
+}
+.hero-liquid.status-offline .liquid-orb {
+  background: radial-gradient(circle at 35% 30%, #fda4af 0%, var(--status-offline) 55%, #be123c 100%);
+  box-shadow: 0 0 35px var(--status-offline-glow), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+.hero-liquid.status-offline .orb-ripple {
+  border-color: var(--status-offline);
+  background: var(--status-offline-halo);
+}
+.hero-liquid.status-offline .liquid-tag-pill {
+  color: #fb7185;
+  background: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.3);
+}
+
+.hero-liquid.status-degraded {
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 30px 60px -12px rgba(245, 158, 11, 0.18), var(--glass-inner-shadow);
+}
+.hero-liquid.status-degraded .liquid-orb {
+  background: radial-gradient(circle at 35% 30%, #fde68a 0%, var(--status-degraded) 55%, #b45309 100%);
+  box-shadow: 0 0 35px var(--status-degraded-glow), inset 0 2px 4px rgba(255, 255, 255, 0.6), inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+}
+.hero-liquid.status-degraded .orb-ripple {
+  border-color: var(--status-degraded);
+  background: var(--status-degraded-halo);
+}
+.hero-liquid.status-degraded .liquid-tag-pill {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* ==========================================================================
+   4 FLOATING LIQUID GLASS METRIC PODS
+   ========================================================================== */
+
+.liquid-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.metric-pod {
+  padding: 1.5rem 1.4rem;
+  border-radius: 24px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.pod-rim {
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--glass-rim) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.pod-header {
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.6rem;
+}
+
+.pod-value {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  transition: color 0.3s ease;
+}
+
+.pod-value .unit {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  margin-left: 2px;
+}
+
+.pod-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   ETHEREAL GLASS FOOTER
+   ========================================================================== */
+
+.liquid-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+.footer-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  border-radius: 9999px;
+  padding: 0.4rem 1.2rem;
+  backdrop-filter: blur(20px);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.footer-orb {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--liquid-cyan);
+  box-shadow: 0 0 6px var(--liquid-cyan);
+}
+
+/* ==========================================================================
+   RESPONSIVE LAYOUT
+   ========================================================================== */
+
 @media (max-width: 860px) {
-  .gauges-grid {
+  .liquid-metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .master-display-bezel {
+  .hero-liquid {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.4rem;
+    padding: 1.8rem;
+  }
+  .liquid-island {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.2rem;
-  }
-  .rack-chassis {
-    padding: 1.8rem 1.4rem;
+    padding: 1.4rem 1.5rem;
   }
 }

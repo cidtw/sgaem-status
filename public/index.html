@@ -4,206 +4,175 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SGAEM 아카이브 상태 모니터</title>
-  <meta name="description" content="163.239.88.115:3536 작동 여부 실시간 스큐어모피즘 모니터">
+  <meta name="description" content="163.239.88.115:3536 작동 여부 실시간 Liquid Glass 모니터">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+KR:wght@500;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Ambient hardware backdrop lighting -->
-  <div class="desk-surface"></div>
+  <!-- Floating Fluid Mesh Background Orbs (iOS 27 Liquid Caustics) -->
+  <div class="fluid-stage">
+    <div class="fluid-blob blob-primary"></div>
+    <div class="fluid-blob blob-secondary"></div>
+    <div class="fluid-blob blob-accent"></div>
+    <div class="fluid-blob blob-glow"></div>
+  </div>
 
-  <div class="rack-chassis">
-    <!-- Corner Rack Screws -->
-    <div class="rack-screw screw-tl"><div class="screw-slot"></div></div>
-    <div class="rack-screw screw-tr"><div class="screw-slot"></div></div>
-    <div class="rack-screw screw-bl"><div class="screw-slot"></div></div>
-    <div class="rack-screw screw-br"><div class="screw-slot"></div></div>
-
-    <!-- Top Ventilation Grille -->
-    <div class="chassis-vents">
-      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-
-    <!-- Hardware Header Panel -->
-    <header class="header">
-      <div class="header-brand">
-        <div class="metal-badge">
-          <span class="badge-rivet"></span>
-          <span class="badge-text" data-i18n="brandBadge">실시간 상태</span>
-          <span class="badge-rivet"></span>
+  <main class="liquid-viewport">
+    <div class="liquid-shell">
+      <!-- Dynamic Island Floating Capsule Header -->
+      <header class="liquid-island">
+        <div class="island-main">
+          <div class="island-badge">
+            <span class="pulsing-fluid-dot"></span>
+            <span data-i18n="brandBadge">실시간 상태</span>
+          </div>
+          <div class="island-title-group">
+            <h1 class="liquid-title" data-i18n="pageTitle">163.239.88.115 상태</h1>
+            <div class="target-capsule">
+              <span class="capsule-label" data-i18n="targetLabel">대상:</span>
+              <a href="http://163.239.88.115:3536/" target="_blank" rel="noopener" class="liquid-link">
+                <code>163.239.88.115:3536</code>
+              </a>
+              <span class="sub-pill">sgaemarchive.sogang.ac.kr</span>
+            </div>
+          </div>
         </div>
-        <h1 class="stamped-title" data-i18n="pageTitle">163.239.88.115 상태</h1>
-        <div class="target-plate">
-          <span class="plate-label" data-i18n="targetLabel">대상:</span>
-          <a href="http://163.239.88.115:3536/" target="_blank" rel="noopener" class="lcd-target">
-            <code>http://163.239.88.115:3536/</code>
-          </a>
-          <span class="host-stamp">sgaemarchive.sogang.ac.kr</span>
-        </div>
-      </div>
 
-      <div class="header-controls">
-        <!-- Language Switcher Dial/Select -->
-        <div class="tactile-control">
-          <div class="control-bezel">
-            <select id="langSelect" class="hardware-select" aria-label="Language selector">
+        <div class="island-controls">
+          <!-- Liquid Language Selector -->
+          <div class="glass-select-pill">
+            <select id="langSelect" class="liquid-select" aria-label="Language selector">
               <option value="ko-kr" selected>🇰🇷 한국어</option>
               <option value="en">🇺🇸 English</option>
               <option value="cn">🇨🇳 中文</option>
             </select>
           </div>
-        </div>
 
-        <!-- 3D Rocker Theme Switcher -->
-        <div class="theme-rocker-wrapper" role="radiogroup" aria-label="Theme mode selector">
-          <button class="rocker-btn" data-theme-val="light" title="라이트 모드 (Light)">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-          <button class="rocker-btn" data-theme-val="dark" title="다크 모드 (Dark)">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
-          <button class="rocker-btn active" data-theme-val="system" title="시스템 테마 (System)">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-          </button>
-        </div>
+          <!-- Liquid Glass Segmented Theme Switcher -->
+          <div class="liquid-segmented-dock" role="radiogroup" aria-label="Theme mode selector">
+            <button class="theme-btn" data-theme-val="light" title="라이트 모드 (Light Mode)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </button>
+            <button class="theme-btn" data-theme-val="dark" title="다크 모드 (Dark Mode)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+            <button class="theme-btn active" data-theme-val="system" title="시스템 테마 (System Mode)">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </button>
+          </div>
 
-        <!-- Interval Dial Selector -->
-        <div class="tactile-control">
-          <label for="intervalSelect" class="stamped-label" data-i18n="intervalLabel">주기:</label>
-          <div class="control-bezel">
-            <select id="intervalSelect" class="hardware-select">
+          <!-- Liquid Interval Selector -->
+          <div class="glass-select-pill">
+            <label for="intervalSelect" class="glass-label" data-i18n="intervalLabel">주기:</label>
+            <select id="intervalSelect" class="liquid-select">
               <option value="10">10s</option>
               <option value="30" selected>30s</option>
               <option value="60">60s</option>
               <option value="0" data-i18n="intervalManual">수동</option>
             </select>
           </div>
-        </div>
 
-        <!-- Tactile 3D Push Button with Chrome Ring -->
-        <button id="refreshBtn" class="tactile-push-btn" title="Manual Test Trigger">
-          <span class="btn-chrome-collar"></span>
-          <span class="btn-cap">
-            <svg class="spin-icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.5" fill="none">
+          <!-- Liquid Glass Check Button -->
+          <button id="refreshBtn" class="liquid-glass-btn" title="Trigger Instant Scan">
+            <span class="liquid-reflection"></span>
+            <svg class="spin-icon" viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2.4" fill="none">
               <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
             </svg>
             <span id="btnText" data-i18n="checkNow">지금 확인</span>
-          </span>
-        </button>
-      </div>
-    </header>
+          </button>
+        </div>
+      </header>
 
-    <!-- LED VU Bar / Progress Meter -->
-    <div class="vu-meter-housing">
-      <div class="vu-glass">
-        <div class="vu-bar" id="countdownBar"></div>
+      <!-- Molten Fluid Progress Line -->
+      <div class="liquid-progress-well">
+        <div class="liquid-progress-bar" id="countdownBar"></div>
+        <div class="countdown-label" id="countdownLabel">Next check in 30s</div>
       </div>
-      <div class="vu-scale">
-        <span>0s</span><span>10s</span><span>20s</span><span>30s</span>
-      </div>
-      <div class="countdown-label" id="countdownLabel">Next check in 30s</div>
-    </div>
 
-    <!-- Main Hero Unit: Recessed Glass Master Indicator -->
-    <section class="master-display-bezel" id="heroCard">
-      <div class="screen-glass-glare"></div>
+      <!-- Hero Liquid Glass Crystal Card: Master Status -->
+      <section class="liquid-glass-card hero-liquid" id="heroCard">
+        <div class="glass-caustic-layer"></div>
+        <div class="glass-rim-highlight"></div>
 
-      <!-- Realistic 3D Convex Dome LED Lamp -->
-      <div class="led-assembly">
-        <div class="led-chrome-bezel">
-          <div class="led-lens" id="statusBeacon">
-            <div class="led-specular"></div>
+        <!-- Bioluminescent Liquid Orb -->
+        <div class="liquid-orb-pod">
+          <div class="liquid-orb" id="statusBeacon">
+            <div class="orb-core"></div>
+            <div class="orb-specular"></div>
           </div>
+          <div class="orb-ripple" id="statusPulse"></div>
         </div>
-        <div class="led-ambient-halo" id="statusPulse"></div>
-      </div>
 
-      <!-- Main Inset VFD / CRT Screen -->
-      <div class="vfd-readout-unit">
-        <div class="vfd-tag" id="statusTag" data-i18n="heroTagChecking">확인 중...</div>
-        <h2 class="vfd-headline" id="statusTitle" data-i18n="heroInitialTitle">서버 상태 확인 중</h2>
-        <p class="vfd-subtext" id="statusDesc" data-i18n="heroInitialDesc">163.239.88.115:3536 연결을 확인하고 있습니다...</p>
-      </div>
-
-      <div class="digital-timestamp-box">
-        <span class="clock-icon">⏱</span>
-        <span id="lastCheckedText">마지막 확인: -</span>
-      </div>
-    </section>
-
-    <!-- 4 Inset Hardware Gauge Meters -->
-    <section class="gauges-grid">
-      <!-- Gauge 1: Master Server State -->
-      <div class="hardware-gauge">
-        <div class="gauge-screw tl"></div><div class="gauge-screw tr"></div>
-        <div class="gauge-label-emboss" data-i18n="metricServer">서버 작동 상태</div>
-        <div class="lcd-display-well">
-          <div class="lcd-value" id="overallMetric">---</div>
-          <div class="lcd-caption" id="overallSub">163.239.88.115</div>
+        <div class="hero-liquid-details">
+          <div class="liquid-tag-pill" id="statusTag" data-i18n="heroTagChecking">확인 중...</div>
+          <h2 class="hero-liquid-title" id="statusTitle" data-i18n="heroInitialTitle">서버 상태 확인 중</h2>
+          <p class="hero-liquid-desc" id="statusDesc" data-i18n="heroInitialDesc">163.239.88.115:3536 연결을 확인하고 있습니다...</p>
         </div>
-      </div>
 
-      <!-- Gauge 2: TCP Socket -->
-      <div class="hardware-gauge">
-        <div class="gauge-screw tl"></div><div class="gauge-screw tr"></div>
-        <div class="gauge-label-emboss" data-i18n="metricTcp">TCP 3536 포트</div>
-        <div class="lcd-display-well">
-          <div class="lcd-value" id="tcpMetric">---</div>
-          <div class="lcd-caption" id="tcpSub" data-i18n="metricTcpSub">소켓 연결</div>
+        <div class="glass-time-capsule">
+          <span class="capsule-icon">􀐫</span>
+          <span id="lastCheckedText">마지막 확인: -</span>
         </div>
-      </div>
+      </section>
 
-      <!-- Gauge 3: HTTP Protocol -->
-      <div class="hardware-gauge">
-        <div class="gauge-screw tl"></div><div class="gauge-screw tr"></div>
-        <div class="gauge-label-emboss" data-i18n="metricHttp">HTTP 응답</div>
-        <div class="lcd-display-well">
-          <div class="lcd-value" id="httpMetric">---</div>
-          <div class="lcd-caption" id="httpSub" data-i18n="metricHttpWait">상태 코드</div>
+      <!-- 4 Floating Liquid Glass Metric Pods -->
+      <section class="liquid-metrics-grid">
+        <div class="liquid-glass-card metric-pod">
+          <div class="pod-rim"></div>
+          <div class="pod-header" data-i18n="metricServer">서버 작동 상태</div>
+          <div class="pod-value" id="overallMetric">---</div>
+          <div class="pod-sub" id="overallSub">163.239.88.115</div>
         </div>
-      </div>
 
-      <!-- Gauge 4: Round-Trip Latency -->
-      <div class="hardware-gauge">
-        <div class="gauge-screw tl"></div><div class="gauge-screw tr"></div>
-        <div class="gauge-label-emboss" data-i18n="metricLatency">지연 시간</div>
-        <div class="lcd-display-well">
-          <div class="lcd-value" id="latencyMetric">--- <span class="unit">ms</span></div>
-          <div class="lcd-caption" id="latencySub" data-i18n="metricLatencySub">왕복 응답 속도</div>
+        <div class="liquid-glass-card metric-pod">
+          <div class="pod-rim"></div>
+          <div class="pod-header" data-i18n="metricTcp">TCP 3536 포트</div>
+          <div class="pod-value" id="tcpMetric">---</div>
+          <div class="pod-sub" id="tcpSub" data-i18n="metricTcpSub">소켓 연결</div>
         </div>
-      </div>
-    </section>
 
-    <!-- Bottom Chassis Grille -->
-    <div class="chassis-vents bottom-vents">
-      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        <div class="liquid-glass-card metric-pod">
+          <div class="pod-rim"></div>
+          <div class="pod-header" data-i18n="metricHttp">HTTP 응답</div>
+          <div class="pod-value" id="httpMetric">---</div>
+          <div class="pod-sub" id="httpSub" data-i18n="metricHttpWait">상태 코드</div>
+        </div>
+
+        <div class="liquid-glass-card metric-pod">
+          <div class="pod-rim"></div>
+          <div class="pod-header" data-i18n="metricLatency">지연 시간</div>
+          <div class="pod-value" id="latencyMetric">--- <span class="unit">ms</span></div>
+          <div class="pod-sub" id="latencySub" data-i18n="metricLatencySub">왕복 응답 속도</div>
+        </div>
+      </section>
+
+      <!-- Ethereal Glass Footer -->
+      <footer class="liquid-footer">
+        <div class="footer-glass-pill">
+          <span class="footer-orb"></span>
+          <span data-i18n="footerText">SGAEM Archive (163.239.88.115:3536) Status Monitor</span>
+        </div>
+      </footer>
     </div>
-
-    <!-- Metal Serial Number Plate Footer -->
-    <footer class="footer-plate">
-      <span class="plate-screw"></span>
-      <span class="serial-text" data-i18n="footerText">SGAEM Archive (163.239.88.115:3536) Status Monitor</span>
-      <span class="plate-screw"></span>
-    </footer>
-  </div>
+  </main>
 
   <script src="app.js"></script>
 </body>
