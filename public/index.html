@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGAEM Archive Status Monitor</title>
+  <meta name="description" content="Real-time uptime and ping status monitor for 163.239.88.115:3536 (sgaemarchive.sogang.ac.kr)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-brand">
+        <div class="brand-badge">LIVE MONITOR</div>
+        <h1>SGAEM Archive Status</h1>
+        <p class="target-link">
+          Target: <a href="http://163.239.88.115:3536/" target="_blank" rel="noopener"><code>http://163.239.88.115:3536/</code></a>
+          <span class="host-pill">sgaemarchive.sogang.ac.kr</span>
+        </p>
+      </div>
+
+      <div class="header-controls">
+        <div class="refresh-control">
+          <label for="intervalSelect">Interval:</label>
+          <select id="intervalSelect">
+            <option value="10">10s</option>
+            <option value="30" selected>30s</option>
+            <option value="60">60s</option>
+            <option value="0">Manual</option>
+          </select>
+        </div>
+        <button id="refreshBtn" class="btn btn-primary" title="Trigger manual check">
+          <svg class="spin-icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+            <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/>
+          </svg>
+          <span id="btnText">Check Now</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Auto-refresh progress bar -->
+    <div class="countdown-wrapper" id="countdownWrapper">
+      <div class="countdown-bar" id="countdownBar"></div>
+      <div class="countdown-label" id="countdownLabel">Next check in 30s</div>
+    </div>
+
+    <!-- Main Hero Banner -->
+    <section class="hero-status card" id="heroCard">
+      <div class="status-indicator-container">
+        <div class="status-beacon" id="statusBeacon"></div>
+        <div class="status-beacon-pulse" id="statusPulse"></div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-tag" id="statusTag">CHECKING...</div>
+        <h2 class="hero-title" id="statusTitle">Connecting to Endpoint</h2>
+        <p class="hero-desc" id="statusDesc">Performing TCP handshake and HTTP verification...</p>
+      </div>
+      <div class="last-checked" id="lastCheckedText">Last checked: Just now</div>
+    </section>
+
+    <!-- Quick Metrics Cards -->
+    <section class="metrics-grid">
+      <div class="metric-card card">
+        <div class="metric-label">HTTP Status</div>
+        <div class="metric-value" id="httpMetric">---</div>
+        <div class="metric-sub" id="httpSub">Waiting for response</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-label">TCP Port 3536</div>
+        <div class="metric-value" id="tcpMetric">---</div>
+        <div class="metric-sub" id="tcpSub">Socket test</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-label">Latency (RTT)</div>
+        <div class="metric-value" id="latencyMetric">--- <span class="unit">ms</span></div>
+        <div class="metric-sub" id="latencySub">Round-trip time</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-label">Session Uptime</div>
+        <div class="metric-value" id="uptimeMetric">---<span class="unit">%</span></div>
+        <div class="metric-sub" id="uptimeSub">0 total checks</div>
+      </div>
+    </section>
+
+    <!-- Timeline Sparkline / Strip -->
+    <section class="timeline-section card">
+      <div class="section-header">
+        <h3>Recent Checks History</h3>
+        <span class="history-count" id="historyCount">0 checks recorded</span>
+      </div>
+      <div class="timeline-bar" id="timelineBar">
+        <!-- Dynamic timeline pills will appear here -->
+      </div>
+    </section>
+
+    <!-- Detailed Inspection Log Table -->
+    <section class="log-section card">
+      <div class="section-header">
+        <h3>Detailed Log</h3>
+        <button id="clearLogBtn" class="btn btn-ghost btn-sm">Clear History</button>
+      </div>
+      <div class="table-responsive">
+        <table class="log-table">
+          <thead>
+            <tr>
+              <th>Timestamp</th>
+              <th>Status</th>
+              <th>TCP (3536)</th>
+              <th>HTTP Code</th>
+              <th>Latency</th>
+              <th>Diagnostics</th>
+            </tr>
+          </thead>
+          <tbody id="logTableBody">
+            <tr class="empty-row">
+              <td colspan="6">No checks recorded yet. Initiating first check...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Diagnostic & Network Info -->
+    <section class="info-section card">
+      <div class="info-header">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <h3>Network & Architecture Notes</h3>
+      </div>
+      <div class="info-body">
+        <ul>
+          <li><strong>Checked From:</strong> Vercel Global Edge / Serverless Network via Node.js runtime.</li>
+          <li><strong>Sogang University Firewall:</strong> <code>163.239.88.115</code> belongs to Sogang University. Inbound external requests to non-standard ports like <code>3536</code> are typically restricted by campus border firewalls unless explicitly white-listed or accessed via <strong>Sogang SSL-VPN</strong>.</li>
+          <li><strong>Endpoint Verification:</strong> Each check attempts a low-level TCP socket connection to port <code>3536</code> and sends an HTTP GET request to verify application layer response.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>SGAEM Archive Status Monitor &bull; Deployed on <a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a> &bull; Checked every 30 seconds</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

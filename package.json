@@ -1,0 +1,13 @@
+{
+  "name": "sgaem-status-monitor",
+  "version": "1.0.0",
+  "description": "Real-time status monitor for 163.239.88.115:3536/",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["status-page", "uptime-monitor", "vercel"],
+  "author": "",
+  "license": "MIT"
+}
