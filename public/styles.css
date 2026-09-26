@@ -1,9 +1,11 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 /* ==========================================================================
    LIQUID GLASS (iOS 27 STYLE) - SYSTEM / DARK / LIGHT
    ========================================================================== */
 
 :root {
-  --font-sans: 'Plus Jakarta Sans', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Fluid Palette - Bioluminescent Glows */
