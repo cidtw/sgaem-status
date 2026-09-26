@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SGAEM 아카이브 상태 모니터</title>
-  <meta name="description" content="Real-time uptime and ping status monitor for 163.239.88.115:3536 (sgaemarchive.sogang.ac.kr)">
+  <meta name="description" content="163.239.88.115:3536 작동 여부 실시간 모니터">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
     <!-- Header -->
     <header class="header">
       <div class="header-brand">
-        <div class="brand-badge" data-i18n="brandBadge">실시간 모니터링</div>
-        <h1 data-i18n="pageTitle">SGAEM 아카이브 상태</h1>
+        <div class="brand-badge" data-i18n="brandBadge">실시간 상태</div>
+        <h1 data-i18n="pageTitle">163.239.88.115 상태</h1>
         <p class="target-link">
           <span data-i18n="targetLabel">대상:</span>
           <a href="http://163.239.88.115:3536/" target="_blank" rel="noopener"><code>http://163.239.88.115:3536/</code></a>
@@ -92,107 +92,50 @@
       <div class="countdown-label" id="countdownLabel">Next check in 30s</div>
     </div>
 
-    <!-- Main Hero Banner -->
+    <!-- Main Hero Banner: Working or Not -->
     <section class="hero-status card" id="heroCard">
       <div class="status-indicator-container">
         <div class="status-beacon" id="statusBeacon"></div>
         <div class="status-beacon-pulse" id="statusPulse"></div>
       </div>
       <div class="hero-content">
-        <div class="hero-tag" id="statusTag" data-i18n="heroTagChecking">연결 확인 중...</div>
-        <h2 class="hero-title" id="statusTitle" data-i18n="heroInitialTitle">엔드포인트 연결 시도 중</h2>
-        <p class="hero-desc" id="statusDesc" data-i18n="heroInitialDesc">TCP 핸드셰이크 및 HTTP 검증을 수행하고 있습니다...</p>
+        <div class="hero-tag" id="statusTag" data-i18n="heroTagChecking">확인 중...</div>
+        <h2 class="hero-title" id="statusTitle" data-i18n="heroInitialTitle">서버 상태 확인 중</h2>
+        <p class="hero-desc" id="statusDesc" data-i18n="heroInitialDesc">163.239.88.115:3536 연결을 확인하고 있습니다...</p>
       </div>
       <div class="last-checked" id="lastCheckedText">마지막 확인: -</div>
     </section>
 
-    <!-- Quick Metrics Cards -->
+    <!-- Essential Metrics Cards -->
     <section class="metrics-grid">
       <div class="metric-card card">
-        <div class="metric-label" data-i18n="metricHttp">HTTP 상태</div>
-        <div class="metric-value" id="httpMetric">---</div>
-        <div class="metric-sub" id="httpSub" data-i18n="metricHttpWait">응답 대기 중</div>
+        <div class="metric-label" data-i18n="metricServer">서버 작동 상태</div>
+        <div class="metric-value" id="overallMetric">---</div>
+        <div class="metric-sub" id="overallSub">163.239.88.115</div>
       </div>
 
       <div class="metric-card card">
         <div class="metric-label" data-i18n="metricTcp">TCP 3536 포트</div>
         <div class="metric-value" id="tcpMetric">---</div>
-        <div class="metric-sub" id="tcpSub" data-i18n="metricTcpSub">소켓 연결 테스트</div>
+        <div class="metric-sub" id="tcpSub" data-i18n="metricTcpSub">소켓 연결</div>
       </div>
 
       <div class="metric-card card">
-        <div class="metric-label" data-i18n="metricLatency">지연 시간 (RTT)</div>
+        <div class="metric-label" data-i18n="metricHttp">HTTP 응답</div>
+        <div class="metric-value" id="httpMetric">---</div>
+        <div class="metric-sub" id="httpSub" data-i18n="metricHttpWait">상태 코드</div>
+      </div>
+
+      <div class="metric-card card">
+        <div class="metric-label" data-i18n="metricLatency">지연 시간</div>
         <div class="metric-value" id="latencyMetric">--- <span class="unit">ms</span></div>
         <div class="metric-sub" id="latencySub" data-i18n="metricLatencySub">왕복 응답 속도</div>
-      </div>
-
-      <div class="metric-card card">
-        <div class="metric-label" data-i18n="metricUptime">세션 가동률</div>
-        <div class="metric-value" id="uptimeMetric">---<span class="unit">%</span></div>
-        <div class="metric-sub" id="uptimeSub">0회 검사 완료</div>
-      </div>
-    </section>
-
-    <!-- Timeline Sparkline / Strip -->
-    <section class="timeline-section card">
-      <div class="section-header">
-        <h3 data-i18n="timelineTitle">최근 검사 이력</h3>
-        <span class="history-count" id="historyCount">0회 기록됨</span>
-      </div>
-      <div class="timeline-bar" id="timelineBar">
-        <!-- Dynamic timeline pills will appear here -->
-      </div>
-    </section>
-
-    <!-- Detailed Inspection Log Table -->
-    <section class="log-section card">
-      <div class="section-header">
-        <h3 data-i18n="logTitle">상세 로그</h3>
-        <button id="clearLogBtn" class="btn btn-ghost btn-sm" data-i18n="clearLog">기록 삭제</button>
-      </div>
-      <div class="table-responsive">
-        <table class="log-table">
-          <thead>
-            <tr>
-              <th data-i18n="colTimestamp">타임스탬프</th>
-              <th data-i18n="colStatus">상태</th>
-              <th data-i18n="colTcp">TCP (3536)</th>
-              <th data-i18n="colHttp">HTTP 코드</th>
-              <th data-i18n="colLatency">지연시간</th>
-              <th data-i18n="colDiagnostics">진단 내용</th>
-            </tr>
-          </thead>
-          <tbody id="logTableBody">
-            <tr class="empty-row">
-              <td colspan="6" data-i18n="firstCheckWait">기록된 내역이 없습니다. 첫 번째 검사를 시작합니다...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- Diagnostic & Network Info -->
-    <section class="info-section card">
-      <div class="info-header">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="12" y1="16" x2="12" y2="12"></line>
-          <line x1="12" y1="8" x2="12.01" y2="8"></line>
-        </svg>
-        <h3 data-i18n="infoTitle">네트워크 및 인프라 안내</h3>
-      </div>
-      <div class="info-body">
-        <ul>
-          <li data-i18n-html="info1"><strong>검사 위치:</strong> Vercel 글로벌 엣지 / 서버리스 네트워크 (Node.js 런타임).</li>
-          <li data-i18n-html="info2"><strong>서강대학교 방화벽:</strong> <code>163.239.88.115</code>는 서강대학교 네트워크에 위치합니다. <code>3536</code>과 같은 비표준 포트에 대한 외부 인바운드 트래픽은 학내 보안 방화벽 정책에 의해 차단될 수 있으며, <strong>서강대학교 SSL-VPN</strong> 연결이 필요할 수 있습니다.</li>
-          <li data-i18n-html="info3"><strong>엔드포인트 검증:</strong> 매 주기마다 <code>3536</code> 포트 TCP 소켓 연결과 HTTP GET 요청을 함께 실행하여 서비스 가용성을 다각도로 검증합니다.</li>
-        </ul>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer">
-      <p data-i18n="footerText">SGAEM 아카이브 상태 모니터 • Vercel 배포됨 • 30초 주기 확인</p>
+      <p data-i18n="footerText">SGAEM Archive Status Monitor</p>
     </footer>
   </div>
 
