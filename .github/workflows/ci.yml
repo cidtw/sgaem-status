@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # packageManager(npm@11) 표준화 — 러너 기본 npm(10) 대신 npm 11 사용
+      - run: npm install -g npm@11
+      - run: npm test
+      - run: node --check server.js && node --check api/status.js && node --check public/app.js

@@ -15,6 +15,24 @@ const MIME_TYPES = {
   '.ico': 'image/x-icon'
 };
 
+const PUBLIC_DIR = path.join(__dirname, 'public');
+
+// Map a URL pathname to a file inside public/. Returns null for anything that
+// would escape public/ (e.g. "/../server.js", encoded "..", NUL bytes).
+function resolvePublicPath(pathname) {
+  let decoded;
+  try {
+    decoded = decodeURIComponent(pathname);
+  } catch {
+    return null;
+  }
+  if (decoded.includes('\0')) return null;
+  const cleanPath = decoded === '/' ? 'index.html' : decoded.replace(/^\/+/, '');
+  const filePath = path.resolve(PUBLIC_DIR, cleanPath);
+  if (filePath !== PUBLIC_DIR && !filePath.startsWith(PUBLIC_DIR + path.sep)) return null;
+  return filePath;
+}
+
 const server = http.createServer((req, res) => {
   const reqUrl = req.url || '/';
   const pathname = reqUrl.split('?')[0];
@@ -33,9 +51,12 @@ const server = http.createServer((req, res) => {
     return statusHandler(req, res);
   }
 
-  // Serve static files
-  let cleanPath = pathname === '/' ? 'index.html' : pathname.replace(/^\/+/, '');
-  let filePath = path.join(__dirname, 'public', cleanPath);
+  // Serve static files (confined to public/)
+  const filePath = resolvePublicPath(pathname);
+  if (filePath === null) {
+    res.writeHead(403, { 'Content-Type': 'text/plain' });
+    return res.end('403 Forbidden');
+  }
 
   if (fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
     const ext = path.extname(filePath);
@@ -44,7 +65,7 @@ const server = http.createServer((req, res) => {
   }
 
   // Fallback to index.html for SPA
-  const indexPath = path.join(__dirname, 'public', 'index.html');
+  const indexPath = path.join(PUBLIC_DIR, 'index.html');
   if (fs.existsSync(indexPath)) {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=UTF-8' });
     return fs.createReadStream(indexPath).pipe(res);
@@ -62,3 +83,4 @@ if (require.main === module) {
 }
 
 module.exports = server;
+module.exports.resolvePublicPath = resolvePublicPath;

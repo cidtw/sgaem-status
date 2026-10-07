@@ -1,6 +1,40 @@
 const http = require('http');
 const net = require('net');
 
+// Monitored target. Override per deployment with env vars; the defaults keep the
+// current behavior when nothing is set.
+const DEFAULT_TARGET = {
+  ip: '163.239.88.115',
+  port: 3536,
+  hostname: 'sgaemarchive.sogang.ac.kr'
+};
+
+function getTarget(env = process.env) {
+  const port = Number.parseInt(env.STATUS_TARGET_PORT || '', 10);
+  return {
+    ip: env.STATUS_TARGET_IP || DEFAULT_TARGET.ip,
+    port: Number.isInteger(port) && port > 0 && port < 65536 ? port : DEFAULT_TARGET.port,
+    hostname: env.STATUS_TARGET_HOSTNAME || DEFAULT_TARGET.hostname
+  };
+}
+
+// Pure status decision from the TCP + HTTP probe results.
+function classifyStatus(tcpResult, httpResult, targetPort) {
+  if (httpResult.statusCode && httpResult.statusCode < 500) {
+    return { status: 'online', diagnostics: 'Target endpoint is reachable and responding to HTTP requests.' };
+  }
+  if (tcpResult.connected) {
+    return {
+      status: 'degraded',
+      diagnostics: `Port ${targetPort} is open, but HTTP returned ${httpResult.statusCode || httpResult.error}.`
+    };
+  }
+  return {
+    status: 'offline',
+    diagnostics: 'Endpoint unreachable. Packets dropped or blocked by firewall (e.g. Sogang campus network / VPN requirement).'
+  };
+}
+
 module.exports = async function handler(req, res) {
   // CORS & No-Cache
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -11,9 +45,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).end();
   }
 
-  const targetIp = '163.239.88.115';
-  const targetPort = 3536;
-  const targetHost = 'sgaemarchive.sogang.ac.kr';
+  const { ip: targetIp, port: targetPort, hostname: targetHost } = getTarget();
   const targetUrl = `http://${targetIp}:${targetPort}/`;
 
   const results = {
@@ -120,16 +152,7 @@ module.exports = async function handler(req, res) {
     results.tcp = tcpResult;
     results.http = httpResult;
 
-    if (httpResult.statusCode && httpResult.statusCode < 500) {
-      results.status = 'online';
-      results.diagnostics = 'Target endpoint is reachable and responding to HTTP requests.';
-    } else if (tcpResult.connected) {
-      results.status = 'degraded';
-      results.diagnostics = `Port ${targetPort} is open, but HTTP returned ${httpResult.statusCode || httpResult.error}.`;
-    } else {
-      results.status = 'offline';
-      results.diagnostics = 'Endpoint unreachable. Packets dropped or blocked by firewall (e.g. Sogang campus network / VPN requirement).';
-    }
+    Object.assign(results, classifyStatus(tcpResult, httpResult, targetPort));
 
     res.status(200).json(results);
   } catch (error) {
@@ -138,3 +161,7 @@ module.exports = async function handler(req, res) {
     res.status(500).json(results);
   }
 };
+
+module.exports.getTarget = getTarget;
+module.exports.classifyStatus = classifyStatus;
+module.exports.DEFAULT_TARGET = DEFAULT_TARGET;
